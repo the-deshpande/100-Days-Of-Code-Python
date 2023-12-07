@@ -4,6 +4,12 @@ from snake import Snake
 from food import Food
 from scoreboard import Scoreboard
 
+
+def close_game():
+    global game_is_on
+    game_is_on = False
+
+
 screen = Screen()
 screen.setup(width=600, height=600)
 screen.bgcolor('black')
@@ -19,6 +25,7 @@ screen.onkey(snake.up, 'Up')
 screen.onkey(snake.down, 'Down')
 screen.onkey(snake.left, 'Left')
 screen.onkey(snake.right, 'Right')
+screen.onkey(close_game, 'space')
 
 game_is_on = True
 while game_is_on:
@@ -35,13 +42,13 @@ while game_is_on:
 #     Collision detection with the wall
     if (snake.head.pos()[0] > 290 or snake.head.pos()[0] < -290 or
             snake.head.pos()[1] > 290 or snake.head.pos()[1] < -290):
-        scoreboard.game_over()
-        game_is_on = False
+        scoreboard.reset()
+        snake.reset()
 
 #     Collision detection with the tail
     for segment in snake.snake[1:]:
         if snake.head.distance(segment) < 10:
-            game_is_on = False
-            scoreboard.game_over()
+            scoreboard.reset()
+            snake.reset()
 
 screen.exitonclick()
