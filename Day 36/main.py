@@ -36,7 +36,7 @@ with open('data.json') as file:
 yesterday_close = float(data['Time Series (Daily)'][yesterday]['4. close'])
 day_before_close = float(data['Time Series (Daily)'][day_before]['4. close'])
 
-if abs(yesterday_close-day_before_close)/yesterday_close > 5:
+if abs(yesterday_close-day_before_close)*100/yesterday_close > 5:
     print('Huge Change')
 else:
     print("Minor Change")
@@ -49,7 +49,7 @@ for i in range(3):
     print(data['articles'][i]['description'])
     print('-----------------------------------------------')
 
-message = (f"{STOCK} : {round(abs(yesterday_close-day_before_close)/yesterday_close, 4)}% change in {COMPANY_NAME}\n"
+message = (f"{STOCK} : {round(abs(yesterday_close-day_before_close)*100/yesterday_close, 4)}% change in {COMPANY_NAME}\n"
            f"News : {data['articles'][0]['title']}")
 
 client = Client(env['TWILIO_SID'], env['TWILIO_AUTH_TOKEN'])
