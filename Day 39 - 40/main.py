@@ -7,10 +7,13 @@ from notification_manager import NotificationManager
 
 sheet_data = DataManager()
 flight_data = FlightData(sheet_data.prices)
+notifier = NotificationManager()
 
 print(sheet_data.prices)
 print(flight_data.data)
 
 for i in range(len(sheet_data.prices)):
     if sheet_data.prices[i]['lowestPrice'] >= flight_data.data[i]['price']:
-        NotificationManager(flight_data.data[i])
+        notifier.send_sms(flight_data.data[i])
+        notifier.send_mail(flight_data.data[i])
+

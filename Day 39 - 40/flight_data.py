@@ -26,14 +26,19 @@ class FlightData:
                 'limit': 1,
             }
             response = requests.get(url=endpoint, headers=header, params=params)
-            output = response.json()['data'][0]
-            self.data.append({
-                'cityFrom': output['cityFrom'],
-                'cityCodeFrom': output['cityCodeFrom'],
-                'cityTo': output['cityTo'],
-                'cityCodeTo': output['cityCodeTo'],
-                'utc_date': output['utc_departure'].split("T")[0],
-                'utc_time': output['utc_departure'].split("T")[1],
-                'price': output['price']
-            })
+
+            try:
+                output = response.json()['data'][0]
+            except KeyError:
+                continue
+            else:
+                self.data.append({
+                    'cityFrom': output['cityFrom'],
+                    'cityCodeFrom': output['cityCodeFrom'],
+                    'cityTo': output['cityTo'],
+                    'cityCodeTo': output['cityCodeTo'],
+                    'utc_date': output['utc_departure'].split("T")[0],
+                    'utc_time': output['utc_departure'].split("T")[1],
+                    'price': output['price']
+                })
 
