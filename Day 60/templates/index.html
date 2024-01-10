@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>My Forms</title>
+</head>
+<body>
+<hr>
+<form id="contact-form" action="{{ url_for('homepage') }}" method="post">
+    <label> Name </label>
+    <input placeholder="Name" type="text" name="username">
+    <label> Password </label>
+    <input placeholder="Password" type="password" name="password">
+    <button type="submit">Submit</button>
+</form>
+<hr>
+</body>
+</html>
