@@ -1,0 +1,17 @@
+{% with about=True %}
+    {% include "header.html" %}
+{% endwith %}
+
+<div class="container">
+    <div class="row flex-lg-row-reverse align-items-center g-5 p-0">
+          <div class="col-10 col-sm-8 col-lg-6">
+            <img src="https://picsum.photos/700/500" class="d-block mx-lg-auto img-fluid" alt="Random" width="700" height="500">
+          </div>
+          <div class="col-lg-6">
+            <h1 class="display-5 fw-bold lh-1 mb-3">I am a software Engineer!</h1>
+            <p class="lead">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Earum eos ex expedita explicabo facilis hic id, illo iusto laborum maxime molestias necessitatibus, odio officia, recusandae rerum sunt voluptatibus. Molestiae, saepe?</p>
+          </div>
+    </div>
+</div>
+
+{% include 'footer.html' %}
