@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<table class="table table-striped p-3 m-3">
+  <thead>
+    <tr>
+      <th scope="col">Id</th>
+      <th scope="col">Name</th>
+      <th scope="col">Map</th>
+      <th scope="col">Location</th>
+      <th scope="col">Coffee Price</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for cafe in cafes %}
+      <tr>
+        <th scope="row">{{ cafe['id'] }}</th>
+        <td><a href="{{ url_for('cafes', _id=cafe['id']) }}">{{ cafe['name'] }}</a></td>
+        <td><a href="{{ cafe['map_url'] }}">Map Link</a></td>
+        <td>{{ cafe['location'] }}</td>
+        <td>{{ cafe['coffee_price'] }}</td>
+        <td><a href="{{ url_for('delete', _id=cafe['id']) }}">❌</a></td>
+      </tr>
+    {% endfor %}
+  </tbody>
+</table>
+
+{% endblock %}

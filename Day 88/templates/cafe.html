@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<table class="table table-striped p-3 m-3">
+  <thead>
+    <tr>
+      <th scope="col">Name</th>
+      <th scope="col">Value</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for key in cafe.keys() %}
+      <tr>
+        <th>{{ key }}</th>
+        {% if key == 'map_url' %}
+        <td><a href="{{ cafe[key] }}">Map Link</a> </td>
+        {% elif key == 'img_url' %}
+        <td><img src="{{ cafe[key] }}" alt="{{ cafe[key] }}"></td>
+        {% else %}
+        <td>{{ cafe[key] }}</td>
+        {% endif %}
+      </tr>
+    {% endfor %}
+  </tbody>
+</table>
+
+{% endblock %}
