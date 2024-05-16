@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+{% from 'bootstrap5/form.html' import render_form %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Image Color Collector</title>
+    {{ bootstrap.load_css() }}
+</head>
+<body>
+
+<header class="container py-3 text-center border-bottom fs-2">
+    Most Occurring Colors
+</header>
+
+<div class="container my-1">
+    {{ render_form(form, form_type='horizontal') }}
+</div>
+
+<div class="container">
+    <div class="row">
+        <div class="col">
+            <img src="{{ url_for('static', filename=image_name) }}" alt="Image" width="700" height="450">
+        </div>
+        <div class="col">
+            <table class="table">
+                <thead>
+                <tr class="text-center">
+                    <th scope="col">Color Code</th>
+                    <th scope="col">Color</th>
+                    <th scope="col">Color Percentage</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for color in colors %}
+                <tr class="text-center">
+                    <td>{{ color[0] }}</td>
+                    <td style="background-color:{{ color[0] }}; width:200px"></td>
+                    <td>{{ '{:.02f}%'.format(color[1]) }}</td>
+                </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>
