@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Harry Potter</title>
+    {{ bootstrap.load_css() }}
+</head>
+<body>
+
+<header class="container py-3 text-center border-bottom fs-2">
+    {{ heading }}
+</header>
+
+<div class="container text-center align-items-center mx-auto" style="height:80vh;">
+
+    <div class="row text-center py-5">
+        <div class="col fs-2">{{ question.question }}</div>
+    </div>
+
+    <div class="row">
+        <div class="col">
+            <a href="{%if question.options[0] == question.correct_answer%}/correct{%else%}/incorrect{%endif%}" class="btn btn-primary p-4">{{ question.options[0] }}</a>
+        </div>
+        <div class="col">
+            <a href="{%if question.options[1] == question.correct_answer%}/correct{%else%}/incorrect{%endif%}" class="btn btn-primary p-4">{{ question.options[1] }}</a>
+        </div>
+        <div class="col">
+            <a href="{%if question.options[2] == question.correct_answer%}/correct{%else%}/incorrect{%endif%}" class="btn btn-primary p-4">{{ question.options[2] }}</a>
+        </div>
+        <div class="col">
+            <a href="{%if question.options[3] == question.correct_answer%}/correct{%else%}/incorrect{%endif%}" class="btn btn-primary p-4">{{ question.options[3] }}</a>
+        </div>
+    </div>
+
+    <div class="row text-center py-3">
+        <img src="{{ url_for('static', filename='quiz.jpeg') }}" alt="Image" height="250">
+    </div>
+
+</div>
+
+<footer class="container py-3 text-center border-top">
+    @copyright Kaiwalya
+</footer>
+
+</body>
+</html>
