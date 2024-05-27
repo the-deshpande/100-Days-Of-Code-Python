@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="UTF-8">
+    <title>Shop</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+<header>
+    <div class="header">The Shopping Center</div>
+    <div id="border"></div>
+</header>
+
+<form action="/" method="POST">
+    <div id="cart"><input type="submit" value="Go to Cart"></div>
+    <div class="items">
+    {% for item in items %}
+    <div class="card">
+        <input type="checkbox" name="{{ item['id'] }}" class="check" {% if item['in_cart'] %} checked {% endif %}>
+        <div>
+            <img src="{{ item['image'] }}" alt="Image">
+        </div>
+        <div id="title">{{ item['title'] }}</div>
+        <div id="price">${{ item['price'] }}</div>
+    </div>
+    {% endfor %}
+    </div>
+</form>
+
+<footer></footer>
+</body>
+</html>
