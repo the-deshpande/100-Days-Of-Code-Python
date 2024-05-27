@@ -20,3 +20,6 @@ if (today - last_date).days > 90:
         connection.starttls()
         connection.login(user=env['EMAIL'], password=env['PASSWORD'])
         connection.sendmail(from_addr=env['EMAIL'], to_addrs=env['RECEIVER'], msg=message)
+
+    with open('date.txt', 'w') as file:
+        file.write(today.strftime('%Y-%m-%d'))
